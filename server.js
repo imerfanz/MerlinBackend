@@ -2,10 +2,11 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
 const serveStatic = require("serve-static");
 
 // mongo setting
-const dbUrl = "mongodb://localhost:27017/merlin";
+const dbUrl = process.env.DB_URL;
 
 // server configuration
 mongoose
