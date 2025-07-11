@@ -20,14 +20,14 @@ mongoose
     console.error("Error connecting to MongoDB:", err);
   });
 
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: 'https://merlin-frontend-one.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true 
+}));
+
+app.options('*', cors());
 
 // configuration for image serving
 app.use("/images", serveStatic(__dirname + "/images"));
