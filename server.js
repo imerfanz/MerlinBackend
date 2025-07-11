@@ -20,7 +20,13 @@ mongoose
     console.error("Error connecting to MongoDB:", err);
   });
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 // configuration for image serving
 app.use("/images", serveStatic(__dirname + "/images"));
