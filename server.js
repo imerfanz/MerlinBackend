@@ -21,13 +21,14 @@ mongoose
   });
 
 app.use(cors({
-  origin: 'https://merlin-frontend-one.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+  origin: process.env.FRONTEND_URL,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true 
+  credentials: true,
+  optionsSuccessStatus: 204
 }));
 
-app.options('*', cors());
+
 
 // configuration for image serving
 app.use("/images", serveStatic(__dirname + "/images"));
